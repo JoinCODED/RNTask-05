@@ -18,15 +18,6 @@ export const getCoffeeShops = () => dispatch => {
     .catch(err => console.error("Error while fetching coffeeshops", err));
 };
 
-// Get a specific coffeeshop by id
-export const getCoffeeShopByID = (id, coffeeshops) => dispatch => {
-  const coffeeshop = coffeeshops.find(shop => shop.id === id) || {};
-  dispatch({
-    type: actionTypes.GET_COFFEESHOP_BY_ID,
-    payload: coffeeshop
-  });
-};
-
 // Set the loading state
 export const setCoffeeShopsLoading = () => ({
   type: actionTypes.COFFEESHOPS_LOADING

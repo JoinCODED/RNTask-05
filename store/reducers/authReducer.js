@@ -19,6 +19,8 @@ export default function(state = initialState, action) {
         ...state,
         error: action.payload
       };
+    case actionTypes.LOGOUT_USER:
+      return initialState;
     default:
       return state;
   }

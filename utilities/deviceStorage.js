@@ -2,7 +2,6 @@ import { AsyncStorage } from "react-native";
 
 const deviceStorage = {
   saveToken(value) {
-    console.log(value);
     AsyncStorage.setItem("token", value).catch(err => console.log(err));
   },
 

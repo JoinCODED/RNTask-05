@@ -1,7 +1,7 @@
 import axios from "axios";
 import jwt_decode from "jwt-decode";
 
-import { SET_CURRENT_USER, SET_ERROR } from "./types";
+import { SET_CURRENT_USER, SET_ERROR, LOGOUT_USER } from "./types";
 import deviceStorage from "../../utilities/deviceStorage";
 
 // Register User
@@ -55,7 +55,19 @@ export const setCurrentUser = decoded => ({
   type: SET_CURRENT_USER,
   payload: decoded
 });
+
+// Set Error information
 export const setError = text => ({
   type: SET_ERROR,
   payload: text
 });
+
+// Logout User
+export const logoutUser = navigation => dispatch => {
+  dispatch({
+    type: LOGOUT_USER
+  });
+  deviceStorage.deleteJWT();
+  navigation.navigate("CoffeeList");
+  alert("Logged out successfully");
+};

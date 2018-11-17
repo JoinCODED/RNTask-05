@@ -38,6 +38,9 @@ const styles = StyleSheet.create({
     height: 180,
     width: null,
     flex: 1
+  },
+  container: {
+    backgroundColor: "transparent"
   }
 });
 export default styles;

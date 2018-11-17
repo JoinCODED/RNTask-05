@@ -23,6 +23,9 @@ import styles from "./styles";
 import { addItemToCart } from "../../store/actions/cartActions";
 import { quantityCounter } from "../../utilities/quantityCounter";
 
+// Component
+import PrivateNavigation from "../PrivateNavigation";
+
 class CoffeeDetail extends Component {
   constructor(props) {
     super(props);
@@ -34,22 +37,7 @@ class CoffeeDetail extends Component {
 
   static navigationOptions = ({ navigation }) => ({
     title: navigation.getParam("shop", {}).name,
-    headerRight: (
-      <Button
-        light
-        transparent
-        onPress={() => navigation.navigate("CoffeeCart")}
-      >
-        <Text>
-          {navigation.getParam("quantity", 0)}{" "}
-          <Icon
-            type="FontAwesome"
-            name="coffee"
-            style={{ color: "white", fontSize: 15 }}
-          />
-        </Text>
-      </Button>
-    )
+    headerRight: <PrivateNavigation route="CoffeeCart" />
   });
 
   componenDidMount() {

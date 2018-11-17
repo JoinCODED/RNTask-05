@@ -63,7 +63,8 @@ class CoffeeCart extends Component {
 }
 
 const mapStateToProps = state => ({
-  cart: state.cart
+  cart: state.cart,
+  auth: state.auth
 });
 
 const mapActionsToProps = dispatch => ({

@@ -8,40 +8,31 @@ import {
   ListItem,
   Card,
   CardItem,
-  Button,
   Thumbnail,
   Text,
   Left,
   Content,
-  Icon
+  Container,
+  Footer,
+  Button,
+  FooterTab
 } from "native-base";
 
 // Style
 import styles from "./styles";
 
-// Actions
+// Utils
 import { quantityCounter } from "../../utilities/quantityCounter";
+
+// Components
+import PrivateNavigation from "../PrivateNavigation";
+import CoffeeFooter from "../CoffeeFooter";
 
 class CoffeeList extends Component {
   static navigationOptions = ({ navigation }) => ({
     title: "Coffee List",
     headerLeft: null,
-    headerRight: (
-      <Button
-        light
-        transparent
-        onPress={() => navigation.navigate("CoffeeCart")}
-      >
-        <Text>
-          {navigation.getParam("quantity", 0)}{" "}
-          <Icon
-            type="FontAwesome"
-            name="coffee"
-            style={{ color: "white", fontSize: 15 }}
-          />
-        </Text>
-      </Button>
-    )
+    headerRight: <PrivateNavigation route="CoffeeCart" />
   });
 
   componenDidMount() {
@@ -97,9 +88,12 @@ class CoffeeList extends Component {
       ListItems = coffeeshops.map(shop => this.renderItem(shop));
     }
     return (
-      <Content>
-        <List>{ListItems}</List>
-      </Content>
+      <Container style={styles.container}>
+        <Content>
+          <List>{ListItems}</List>
+        </Content>
+        <CoffeeFooter />
+      </Container>
     );
   }
 }
